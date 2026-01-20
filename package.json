@@ -1,0 +1,21 @@
+{
+  "name": "getmetricsgoogle",
+  "version": "1.0.0",
+  "description": "get google ads metrics",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "npm run dev"
+  },
+  "keywords": [
+    "google",
+    "ads"
+  ],
+  "author": "yago marques",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "dotenv": "^17.2.3",
+    "google-ads-api": "^22.0.0"
+  }
+}
