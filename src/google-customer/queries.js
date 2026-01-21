@@ -1,6 +1,6 @@
 // Arquivo feito para estar com todas as queries 
 
-export const queries = Object.freeze({
+export const SearchQueries = Object.freeze({
   CampaingsQuery: (range) => `
     SELECT 
       campaign.id,
