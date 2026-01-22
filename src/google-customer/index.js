@@ -1,7 +1,9 @@
 import { client } from "../google-client/index.js";
-import { enums } from "google-ads-api";
 import { GoogleAdsSerive } from "./authenticate.js";
 import { Search } from "./modules/SearchService.js";
+import { Pmax } from "./modules/PmaxService.js";
+import { AllCampaings } from "./queries.js";
+import {DateRange} from './CampaignTypeBase.js'
 
 const googleService = new GoogleAdsSerive();
 export class Customer {
@@ -13,7 +15,12 @@ export class Customer {
         });
 
         this.search = new Search(this.customer);
+        this.pmax = new Pmax(this.customer)
     }
+
+    async getAllCampaigns(range = DateRange.LAST_7_DAYS) {
+            return await this.customer.query(AllCampaings(range));
+        }
 
 }
 
@@ -21,8 +28,7 @@ export class Customer {
 const plano = new Customer(process.env.CONTA_CLIENTE)
 
 // console.log(await googleService.listAccounts())
-console.log(await plano.search.getCampaigns())
-// console.log(await plano.search.getAdGroups(22373042150))
-// console.log(await plano.search.getKeywords(22373042150, 177779484220))
-// console.log(await plano.search.getIncomeRange(22373042150, 177779484220))
-// console.log(await plano.search.getAllDemographics(22373042150, 177779484220))
+// console.log(await plano.getAllCampaigns())
+// console.log(await plano.pmax.getAssets(21088544529))
+// console.log(await plano.pmax.getAllDemographics(21088544529, 6493283884))
+console.log(await plano.pmax.getAgeRange(21088544529))
